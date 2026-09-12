@@ -8,6 +8,13 @@ EnvLoader.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Cloud / Container hosting: Bind to $PORT if set (Render, Fly.io, Railway)
+var port = Environment.GetEnvironmentVariable("PORT");
+if (!string.IsNullOrEmpty(port))
+{
+    builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+}
+
 // Load environment variables (from .env or system environment)
 builder.Configuration.AddEnvironmentVariables();
 
@@ -82,6 +89,12 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// Forwarded Headers for reverse proxies (Render, Cloudflare, etc.)
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor | Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto
+});
+
 // CORS first to ensure preflight and error responses include Access-Control-Allow-Origin
 app.UseCors("ExtensionPolicy");
 
@@ -94,17 +107,18 @@ app.Use(async (context, next) =>
     await next();
 });
 
-// Production HTTPS redirection and HSTS
-if (!app.Environment.IsDevelopment())
-{
-    app.UseHsts();
-    app.UseHttpsRedirection();
-}
-
 // Centralized error handling
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
-// Health check
+// Health checks (both root and /health for Render deploy monitors)
+app.MapGet("/", () => Results.Ok(new 
+{ 
+    status = "healthy", 
+    service = "Compare Anything AI Backend",
+    version = "1.0.0",
+    timestamp = DateTime.UtcNow 
+}));
+
 app.MapGet("/health", () => Results.Ok(new 
 { 
     status = "healthy", 

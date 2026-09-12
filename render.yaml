@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: compare-anything-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: AI__Model
+        value: openai/gpt-oss-20b
+      - key: AI__Provider
+        value: Groq
+      - key: AI__MaxTokens
+        value: "8192"
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
