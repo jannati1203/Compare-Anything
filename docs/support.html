@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compare Anything Support</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+    }
+    h1 { font-size: 28px; color: var(--accent); margin-bottom: 8px; }
+    p.tagline { color: var(--muted); font-size: 16px; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    h2 { font-size: 18px; margin-bottom: 12px; color: var(--text); }
+    ul, ol { padding-left: 20px; color: var(--muted); }
+    li { margin-bottom: 8px; }
+    strong { color: var(--text); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .contact-box {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Compare Anything Support</h1>
+      <p class="tagline">Stop switching between tabs. Compare them.</p>
+    </header>
+
+    <div class="card">
+      <h2>About Compare Anything</h2>
+      <p style="color: var(--muted); margin-bottom: 12px;">
+        Compare Anything is a Chrome extension that allows you to explicitly select 2 to 4 webpages and generate an objective, evidence-based side-by-side comparison table without switching between tabs.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>How to Use</h2>
+      <ol>
+        <li>Open any webpage you want to compare (e.g., product, course, job posting).</li>
+        <li>Click the <strong>Compare Anything</strong> icon in your browser toolbar.</li>
+        <li>Click <strong>"Add Current Page"</strong>.</li>
+        <li>Repeat for 1 to 3 additional webpages (up to 4 pages total).</li>
+        <li>(Optional) Type what matters most to you in the priority field.</li>
+        <li>Click <strong>"Compare Pages"</strong> to generate your visual comparison table.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Common Questions & Troubleshooting</h2>
+      <ul>
+        <li>
+          <strong>Page extraction limitations:</strong> Compare Anything extracts structured specifications, tables, lists, and headings. Very heavy dynamic canvas apps, PDF viewers, or pages requiring manual interaction to display specifications may yield limited text.
+        </li>
+        <li>
+          <strong>Why does a spec say "Not stated"?</strong> Our AI operates strictly on evidence. If a page does not explicitly state a specification, we mark it as "Not stated" instead of guessing or hallucinating facts.
+        </li>
+        <li>
+          <strong>Why does it say "No clear winner"?</strong> When the facts on the compared pages are tied, inconclusive, or subjective, Compare Anything provides a balanced explanation rather than forcing an arbitrary winner.
+        </li>
+        <li>
+          <strong>Service availability & rate limits:</strong> To ensure fast, free, and reliable comparisons for all users, rate limits are enforced (10 comparisons per day per installation, 30 per IP per hour).
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Privacy & Security</h2>
+      <p style="color: var(--muted); margin-bottom: 8px;">
+        Compare Anything accesses pages only when you explicitly click "Add Current Page". It never scans your history or unselected tabs. No user accounts or personal data are collected.
+      </p>
+      <p><a href="PRIVACY.md">Read our complete Privacy Policy &rarr;</a></p>
+    </div>
+
+    <div class="contact-box">
+      <h2>Need Further Help?</h2>
+      <p style="color: var(--muted); margin-top: 4px;">
+        Reach out via GitHub Issues: <a href="https://github.com/compare-anything/compare-anything/issues" target="_blank" rel="noopener">Compare Anything Issues</a><br>
+        or email us at: <a href="mailto:support@compareanything.app">support@compareanything.app</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

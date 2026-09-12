@@ -1,0 +1,44 @@
+# Environment and secret files
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Build and binary outputs
+bin/
+obj/
+**/bin/
+**/obj/
+dist/
+**/dist/
+*.zip
+
+# Dependencies
+node_modules/
+**/node_modules/
+vendor/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.user
+
+# Cache and testing
+/.phpunit.cache
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+.phpunit.result.cache
